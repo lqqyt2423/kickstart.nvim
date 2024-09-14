@@ -165,7 +165,10 @@ vim.opt.scrolloff = 10
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', 'gl', '$', { desc = 'Go to line end' })
-vim.keymap.set('n', 'gb', '0', { desc = 'Go to line start' })
+vim.keymap.set('n', 'gb', '^', { desc = 'Go to line start' })
+
+vim.keymap.set('n', '<leader>;', 'A;<Esc>', { desc = 'Write [;] at line end' })
+vim.keymap.set('n', '<leader>,', 'A,<Esc>', { desc = 'Write [,] at line end' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -458,6 +461,8 @@ require('lazy').setup({
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
         }
+        -- simulate user keypress
+        -- vim.cmd 'call feedkeys("\\<Esc>")'
       end, { desc = '[S]earch [/] in Open Files' })
 
       -- Shortcut for searching your Neovim configuration files
@@ -638,7 +643,11 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
-        zls = {},
+        zls = {
+          settings = {
+            enable_argument_placeholders = true,
+          },
+        },
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -858,6 +867,12 @@ require('lazy').setup({
       }
     end,
   },
+
+  -- colorscheme
+  -- { 'maxmx03/solarized.nvim', priority = 1000, opts = {} },
+  -- { 'sainnhe/everforest', priority = 1000 },
+  -- { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+  -- { 'projekt0n/github-nvim-theme', priority = 1000 },
 
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
