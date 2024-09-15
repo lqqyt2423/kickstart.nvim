@@ -248,6 +248,15 @@ require('lazy').setup({
   --
 
   {
+    'folke/zen-mode.nvim',
+    opts = {
+      window = {
+        width = 150,
+      },
+    },
+  },
+
+  {
     'nvim-tree/nvim-tree.lua',
     config = function()
       require('nvim-tree').setup {
