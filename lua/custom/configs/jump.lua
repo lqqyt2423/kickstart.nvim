@@ -15,3 +15,21 @@ vim.keymap.set('n', 'H', function()
     vim.api.nvim_command 'exe "normal! \\<C-u>"'
   end
 end, { desc = 'Scroll up' })
+
+vim.keymap.set('n', 'gm', function()
+  local pos = vim.fn.getcursorcharpos()
+  local line = vim.fn.getline '.'
+  local first_c_index = 0
+
+  for i = 1, #line do
+    local c = line:sub(i, i)
+
+    if first_c_index == 0 and c ~= ' ' then
+      first_c_index = i
+      break
+    end
+  end
+
+  local middle = math.floor((first_c_index + string.len(line)) / 2)
+  vim.fn.setcursorcharpos { pos[2], middle }
+end, { desc = 'Go to line middle' })

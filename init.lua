@@ -211,7 +211,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 require 'custom.configs.lastplace'
-require 'custom.configs.scroll'
+require 'custom.configs.jump'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
