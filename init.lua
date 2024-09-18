@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -102,7 +102,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -256,28 +256,28 @@ require('lazy').setup({
     },
   },
 
-  {
-    'nvim-tree/nvim-tree.lua',
-    config = function()
-      require('nvim-tree').setup {
-        on_attach = function(bufnr)
-          local api = require 'nvim-tree.api'
-
-          local function opts(desc)
-            return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-          end
-
-          -- default mappings
-          api.config.mappings.default_on_attach(bufnr)
-
-          -- custom mappings
-          vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
-        end,
-      }
-
-      vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
-    end,
-  },
+  -- {
+  --   'nvim-tree/nvim-tree.lua',
+  --   config = function()
+  --     require('nvim-tree').setup {
+  --       on_attach = function(bufnr)
+  --         local api = require 'nvim-tree.api'
+  --
+  --         local function opts(desc)
+  --           return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  --         end
+  --
+  --         -- default mappings
+  --         api.config.mappings.default_on_attach(bufnr)
+  --
+  --         -- custom mappings
+  --         vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
+  --       end,
+  --     }
+  --
+  --     vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
+  --   end,
+  -- },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
