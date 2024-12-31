@@ -692,6 +692,7 @@ require('lazy').setup({
         },
 
         ruby_lsp = {},
+        elixirls = {},
       }
 
       -- Ensure the servers and tools above are installed
