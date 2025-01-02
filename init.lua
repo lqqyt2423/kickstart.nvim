@@ -246,7 +246,16 @@ require('lazy').setup({
   -- Use `opts = {}` to force a plugin to be loaded.
   --
 
-  { 'akinsho/toggleterm.nvim', version = '*', config = true },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      require('toggleterm').setup {
+        shading_factor = 0,
+        shading_ratio = 0,
+      }
+    end,
+  },
 
   {
     'folke/zen-mode.nvim',
