@@ -459,7 +459,14 @@ require('lazy').setup({
       end, { desc = 'ZenMode' })
 
       vim.keymap.set('n', '<leader>t', function()
-        vim.cmd 'ToggleTerm'
+        local window = vim.api.nvim_get_current_win()
+        local is_float = require('toggleterm.ui').is_float(window)
+
+        if is_float then
+          vim.cmd 'ToggleTerm direction=float'
+        else
+          vim.cmd 'ToggleTerm'
+        end
       end, { desc = 'ToggleTerm' })
 
       -- Slightly advanced example of overriding default behavior and theme
