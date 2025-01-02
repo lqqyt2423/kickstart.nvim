@@ -246,6 +246,8 @@ require('lazy').setup({
   -- Use `opts = {}` to force a plugin to be loaded.
   --
 
+  { 'akinsho/toggleterm.nvim', version = '*', config = true },
+
   {
     'folke/zen-mode.nvim',
     opts = {
@@ -338,7 +340,7 @@ require('lazy').setup({
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
+        -- { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
@@ -442,9 +444,14 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>c', function()
         builtin.command_history()
       end, { desc = '[S]earch [C]ommand [H]istory' })
+
       vim.keymap.set('n', '<leader>z', function()
         vim.cmd 'ZenMode'
       end, { desc = 'ZenMode' })
+
+      vim.keymap.set('n', '<leader>t', function()
+        vim.cmd 'ToggleTerm'
+      end, { desc = 'ToggleTerm' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -614,11 +621,11 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, '[T]oggle Inlay [H]ints')
-          end
+          -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          --   map('<leader>th', function()
+          --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+          --   end, '[T]oggle Inlay [H]ints')
+          -- end
         end,
       })
 
