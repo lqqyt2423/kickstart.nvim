@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = false
+-- vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -255,29 +255,6 @@ require('lazy').setup({
       },
     },
   },
-
-  -- {
-  --   'nvim-tree/nvim-tree.lua',
-  --   config = function()
-  --     require('nvim-tree').setup {
-  --       on_attach = function(bufnr)
-  --         local api = require 'nvim-tree.api'
-  --
-  --         local function opts(desc)
-  --           return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  --         end
-  --
-  --         -- default mappings
-  --         api.config.mappings.default_on_attach(bufnr)
-  --
-  --         -- custom mappings
-  --         vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
-  --       end,
-  --     }
-  --
-  --     vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
-  --   end,
-  -- },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -896,12 +873,6 @@ require('lazy').setup({
       }
     end,
   },
-
-  -- colorscheme
-  -- { 'maxmx03/solarized.nvim', priority = 1000, opts = {} },
-  -- { 'sainnhe/everforest', priority = 1000 },
-  -- { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-  -- { 'projekt0n/github-nvim-theme', priority = 1000 },
 
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
