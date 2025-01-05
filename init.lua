@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -245,6 +245,15 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
+
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('nvim-tree').setup {}
+    end,
+  },
 
   {
     'akinsho/toggleterm.nvim',
@@ -453,6 +462,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>c', function()
         builtin.command_history()
       end, { desc = '[S]earch [C]ommand [H]istory' })
+
+      vim.keymap.set('n', '<leader>b', function()
+        vim.cmd 'NvimTreeToggle'
+      end, { desc = 'NvimTreeToggle' })
 
       vim.keymap.set('n', '<leader>z', function()
         vim.cmd 'ZenMode'
