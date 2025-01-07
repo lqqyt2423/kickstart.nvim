@@ -98,6 +98,8 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+vim.opt.fileformat = 'unix'
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -703,6 +705,8 @@ require('lazy').setup({
         ts_ls = {},
         --
         eslint = {},
+        prettier = {},
+        prettierd = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -782,7 +786,7 @@ require('lazy').setup({
           lsp_format_opt = 'fallback'
         end
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_format = lsp_format_opt,
         }
       end,
@@ -792,10 +796,22 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+      },
+      formatters = {
+        prettierd = {
+          options = {
+            env = {},
+          },
+        },
       },
     },
     config = function(opts)
+      local utils = require 'custom.utils'
+      local nvim_config_path = vim.fn.stdpath 'config'
+      local prettierd_default_config_path = utils.path_join { nvim_config_path, 'lua', 'custom', 'configs', '.prettierrc' }
+      opts.opts.formatters.prettierd.options.env.PRETTIERD_DEFAULT_CONFIG = prettierd_default_config_path
       require('conform').setup(opts.opts)
 
       vim.api.nvim_create_user_command('ConformFormat', function()
