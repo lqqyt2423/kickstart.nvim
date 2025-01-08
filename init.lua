@@ -213,7 +213,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 require 'custom.configs.lastplace'
 require 'custom.configs.jump'
-require 'custom.configs.copy'
+require 'custom.configs.yank'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -363,6 +363,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         -- { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>y', group = '[Y]ank' },
       },
     },
   },
@@ -787,7 +788,7 @@ require('lazy').setup({
           lsp_format_opt = 'fallback'
         end
         return {
-          timeout_ms = 1000,
+          timeout_ms = 2000,
           lsp_format = lsp_format_opt,
         }
       end,
